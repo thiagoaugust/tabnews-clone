@@ -26,4 +26,9 @@ test("POST to /api/v1/migrations should return 200", async () => {
   console.log(responseBody2);
   expect(Array.isArray(responseBody2)).toBe(true);
   expect(responseBody2.length).toBe(0);
+
+  const response3 = await fetch("http://localhost:3000/api/v1/migrations", {
+    method: "DELETE",
+  });
+  expect(response3.status).toBe(405);
 });
